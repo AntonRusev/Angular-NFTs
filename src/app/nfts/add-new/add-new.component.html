@@ -1,0 +1,31 @@
+<form [formGroup]="form" (ngSubmit)="newNftHandler()">
+    <fieldset>
+        <h2>Add new NFT</h2>
+            <!-- nftName -->
+            <p>
+                <label for="name"><span><i></i></span>Name: </label>
+                <input type="text" id="nftName" formControlName="nftName" placeholder="Enter NFT Name Here"> 
+            </p>
+
+            <!-- imageUrl -->
+            <p>
+                <label for="imageUrl"><span><i></i></span> Image URL:  </label>
+                <input type="text" id="imageUrl" formControlName="imageUrl" placeholder="Enter Image URL Here"> 
+            </p>
+
+            <!-- price -->
+            <p>
+                <label for="price"><span><i></i></span>Price: </label>
+                <input type="number" id="price" formControlName="price" placeholder="Enter Price Here"> 
+            </p>
+
+            <div>
+                <button [disabled]="form.invalid">Add</button>
+            </div>
+            
+            <div>
+                <button routerLink="/nfts/catalog">Cancel</button>
+            </div>
+
+    </fieldset>
+</form>

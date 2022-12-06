@@ -1,0 +1,38 @@
+<header>
+    <div>
+        <div class="logo">
+            <p><span>NFTs</span></p>
+        </div>
+        <div class="mini-navbar">
+            <ul class="not-logged" *ngIf="!isLoggedIn">
+                <li>
+                    <a routerLink="/auth/login">Login</a>
+                </li>
+                <li>
+                    <a routerLink="/auth/register">Register</a>
+                </li>
+            </ul>
+            <ul class="logged-in" *ngIf="isLoggedIn">
+                <li>
+                    <a routerLink="/auth/profile">{{user?.username}}'s profile</a>
+                </li>
+                <li>
+                    <a routerLink="/auth/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <nav>
+        <ul>
+            <li>
+                <a routerLink="/">Home</a>
+            </li>
+            <li>
+                <a routerLink="/nfts/catalog">Catalog</a>
+            </li>
+            <li>
+                <a routerLink="/nfts/new">Add new NFT</a>
+            </li>
+        </ul>
+    </nav>
+</header>
