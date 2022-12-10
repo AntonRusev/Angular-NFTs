@@ -1,24 +1,38 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { INfts } from '../shared/interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NftsService {
 
-  constructor() { }
+  // TODO make a variable with the rest-api adress 
 
-  // TODO
+  constructor(private http: HttpClient) { }
+
+  // TODO check proper path for nfts link
   getNfts(maxCount?: number) {
+    let url = 'http://localhost:3030/data/catalog';
+    if (maxCount) {
+      url += '?limit=5'
+    }
+    return this.http.get<INfts[]>(url);
   }
 
-  getNft() {
+  getNft(id: string) {
+    return this.http.get<INfts>('http://localhost:3030/data/catalog' + id);
+  }
+ // TODO check for proper name of the parameters required by the rest-api
+  createNft(nameNft: string, imageUrl: string, price: number, description: string){
+    return this.http.post<INfts>('http://localhost:3030/data/catalog', { nameNft, imageUrl, price, description });
   }
 
-  createNft(){    
+  updateNft(id: string, nameNft: string, imageUrl: string, price: number, description: string){
+    return this.http.put<INfts>('http://localhost:3030/data/catalog/' + id, {  nameNft, imageUrl, price, description });
   }
 
-  updateNft(){
+  deleteNft(id: string) {
+    return this.http.delete<INfts>('http://localhost:3030/data/catalog/' + id);
   }
-
-
 }

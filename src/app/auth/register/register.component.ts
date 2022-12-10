@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { matchPasswordValidator } from 'src/app/shared/validators';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -15,6 +16,9 @@ export class RegisterComponent {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(5)]],
     rePassword: [],
+  },
+  {
+    validator: matchPasswordValidator('password', 'rePassword')
   });
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
@@ -25,11 +29,10 @@ export class RegisterComponent {
     }
     console.log(this.form.value)
     const { username, email, password, rePassword} = this.form.value;
-    // TODO
-    // this.authService.register(username!, email!, password!, rePassword!)
-    //   .subscribe(user => {
-    //     this.router.navigate(['/']);
-    //   });
-  }
 
+    this.authService.register(username!, email!, password!, rePassword!)
+      .subscribe(user => {
+        this.router.navigate(['/']);
+      });
+  }
 }

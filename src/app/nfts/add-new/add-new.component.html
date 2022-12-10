@@ -19,6 +19,11 @@
                 <input type="number" id="price" formControlName="price" placeholder="Enter Price Here"> 
             </p>
 
+            <p>
+                <label for="description"><span><i></i></span>Description: </label>
+                <textarea type="text" id="description" formControlName="description" placeholder="Enter description Here"> </textarea>
+            </p>
+
             <div>
                 <button [disabled]="form.invalid">Add</button>
             </div>

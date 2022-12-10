@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class LoginComponent {
     password: ['', [Validators.required, Validators.minLength(5)]],
   });
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   loginHandler() {
     if( this.form.invalid) {
@@ -23,11 +23,14 @@ export class LoginComponent {
     }
     console.log(this.form.value)
     const { username, password } = this.form.value;
-    // TODO
-    // this.authService.login(username!, password!)
-    //   .subscribe(user => {
-    //     this.router.navigate(['/']);
-    //   });
+
+    this.authService.login(username!, password!)
+      .subscribe(user => {
+        this.router.navigate(['/']);
+      });
+    const returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
+    
+    this.router.navigate([returnUrl]);
   }
 
 

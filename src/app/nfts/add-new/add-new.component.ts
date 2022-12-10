@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth/auth.service';
+import { NftsService } from '../nfts.service';
 
 @Component({
   selector: 'app-add-new',
@@ -13,22 +13,23 @@ export class AddNewNftsComponent {
   form = this.fb.group({
     nftName: ['', [Validators.required, Validators.minLength(5)]],
     imageUrl: ['', [Validators.required]], //TODO imageURL validator
-    price: ['', [Validators.required, Validators.min(1)]],
+    price: [1, [Validators.required, Validators.min(1)]],
+    description: ['', [Validators.required, Validators.minLength(10)]],
   });
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private fb: FormBuilder, private nftsService: NftsService, private router: Router) { }
 
   newNftHandler() {
     if( this.form.invalid) {
       return;
     }
     console.log(this.form.value)
-    const { nftName, imageUrl, price} = this.form.value;
+    const { nftName, imageUrl, price, description} = this.form.value;
     // TODO
-    // this.authService.createNft(nftName!, imageUrl!, price!)
-    //   .subscribe(user => {
-    //     this.router.navigate(['/nfts/catalog']);
-    //   });
+    this.nftsService.createNft(nftName!, imageUrl!, price!, description!)
+      .subscribe(user => {
+        this.router.navigate(['/nfts/catalog']);
+      });
   }
 
 }
