@@ -34,14 +34,12 @@ export class AuthService implements OnDestroy {
    }
 
   register(username: string, email: string, password: string, rePassword: string) {
-    return this.http.post<IUser>('http://localhost:3030/users/register', { username, email, password, rePassword})
-    .pipe(tap(user => this.user$$.next(user)));
+    return this.http.post<any>('http://localhost:3030/users/register', { username, email, password, rePassword})
+    .pipe(
+      tap(res => localStorage.setItem('accessToken', res.accessToken)),
+      tap(user => this.user$$.next(user)));
   }
 
-  // login(username: string, password: string) {
-  //   return this.http.post<any>('http://localhost:3030/users/login', { username, password })
-  //   .pipe(tap(user => this.user$$.next(user)));
-  // }
   login(username: string, password: string) {
     return this.http.post<any>('http://localhost:3030/users/login', { username, password })
     .pipe(

@@ -27,12 +27,13 @@ export class RegisterComponent {
     if( this.form.invalid) {
       return;
     }
-    console.log(this.form.value)
+    // console.log(this.form.value)
     const { username, email, password, rePassword} = this.form.value;
 
     this.authService.register(username!, email!, password!, rePassword!)
       .subscribe(user => {
         this.router.navigate(['/']);
       });
+
   }
 }
