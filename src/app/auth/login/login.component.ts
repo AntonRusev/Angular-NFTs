@@ -25,12 +25,17 @@ export class LoginComponent {
     const { username, password } = this.form.value;
 
     this.authService.login(username!, password!)
-      .subscribe(user => {
+      .subscribe(() => {
         this.router.navigate(['/']);
       });
+    // this.authService.login(username!, password!)
+    // .subscribe(res => console.log(res));
+
+
     const returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
     
     this.router.navigate([returnUrl]);
+    // this.form.reset();
   }
 
 

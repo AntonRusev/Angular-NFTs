@@ -30,6 +30,7 @@ export class AuthService implements OnDestroy {
     this.subscription = this.user$.subscribe(user => {
       this.user = user;
     });
+    const accessToken = localStorage.getItem('accessToken')
    }
 
   register(username: string, email: string, password: string, rePassword: string) {
@@ -37,14 +38,22 @@ export class AuthService implements OnDestroy {
     .pipe(tap(user => this.user$$.next(user)));
   }
 
+  // login(username: string, password: string) {
+  //   return this.http.post<any>('http://localhost:3030/users/login', { username, password })
+  //   .pipe(tap(user => this.user$$.next(user)));
+  // }
   login(username: string, password: string) {
     return this.http.post<any>('http://localhost:3030/users/login', { username, password })
-    .pipe(tap(user => this.user$$.next(user)));
+    .pipe(
+      tap(res => localStorage.setItem('accessToken', res.accessToken)),
+      tap(user => this.user$$.next(user)));
   }
 
   logout() {
     return this.http.get<void>('http://localhost:3030/users/logout', {})
-    .pipe(tap(() => this.user$$.next(null)));
+    .pipe(
+      tap(() => this.user$$.next(null)),
+      tap(() => localStorage.clear()));
   }
   // TODO check for the proper path for /register /login and /logout
 
