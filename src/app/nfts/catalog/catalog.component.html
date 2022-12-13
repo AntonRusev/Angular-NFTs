@@ -1,1 +1,14 @@
 <p>catalog works!</p>
+<div *ngIf="errorFetchingData">Error loading nfts</div>
+
+<div *ngIf="nftsList">
+    <div *ngFor="let nft of nftsList">
+        <h2>{{nft.nftName}}</h2>
+        <p>{{nft.imageUrl}}</p>
+        <p>{{nft.price}}</p>
+        <p>{{nft.description}}</p>
+        <p>{{nft | json}}</p>
+        <p>{{nft._id | json}}</p>
+        <button routerLink="/nfts/details/{{nft._id}}">Details</button>
+    </div>
+</div>

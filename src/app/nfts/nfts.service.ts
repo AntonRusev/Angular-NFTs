@@ -12,24 +12,21 @@ export class NftsService {
   constructor(private http: HttpClient) { }
 
   // TODO check proper path for nfts link
-  getNfts(maxCount?: number) {
+  getNfts() {
     let url = 'http://localhost:3030/data/catalog';
-    if (maxCount) {
-      url += '?limit=5'
-    }
     return this.http.get<INfts[]>(url);
   }
 
   getNft(id: string) {
-    return this.http.get<INfts>('http://localhost:3030/data/catalog' + id);
+    return this.http.get<INfts>('http://localhost:3030/data/catalog/' + id);
   }
  // TODO check for proper name of the parameters required by the rest-api
-  createNft(nameNft: string, imageUrl: string, price: number, description: string){
-    return this.http.post<INfts>('http://localhost:3030/data/catalog', { nameNft, imageUrl, price, description });
+  createNft(nftName: string, imageUrl: string, price: number, description: string){
+    return this.http.post<INfts>('http://localhost:3030/data/catalog', { nftName, imageUrl, price, description });
   }
 
-  updateNft(id: string, nameNft: string, imageUrl: string, price: number, description: string){
-    return this.http.put<INfts>('http://localhost:3030/data/catalog/' + id, {  nameNft, imageUrl, price, description });
+  updateNft(id: string, nftName: string, imageUrl: string, price: number, description: string){
+    return this.http.put<INfts>('http://localhost:3030/data/catalog/' + id, {  nftName, imageUrl, price, description });
   }
 
   deleteNft(id: string) {

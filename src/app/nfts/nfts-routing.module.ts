@@ -2,6 +2,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { AddNewNftsComponent } from "./add-new/add-new.component";
 import { CatalogComponent } from "./catalog/catalog.component";
 import { NftDetailComponent } from "./nft-detail/nft-detail.component";
+import { NftResolver } from "./resolvers/nft.resolver";
 
 const routes: Routes = [
     {
@@ -12,7 +13,8 @@ const routes: Routes = [
         }
     },
     {
-        path: 'catalog/:id',
+        path: 'details/:id',
+        resolve: { NftResolver },
         component: NftDetailComponent,
         data: {
             title: 'Details'

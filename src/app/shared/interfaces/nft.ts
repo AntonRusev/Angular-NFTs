@@ -1,5 +1,6 @@
 export interface INfts {
-    nameNft: string,
+    _id: string,
+    nftName: string,
     imageUrl: string,
     price: number,
     description: string,
