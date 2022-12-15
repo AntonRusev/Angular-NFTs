@@ -23,7 +23,7 @@ export class AddNewNftsComponent {
     if( this.form.invalid) {
       return;
     }
-    console.log(this.form.value)
+
     const { nftName, imageUrl, price, description} = this.form.value;
     // TODO
     this.nftsService.createNft(nftName!, imageUrl!, price!, description!)

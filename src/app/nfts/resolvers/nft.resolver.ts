@@ -12,7 +12,7 @@ export class NftResolver implements Resolve<INfts | null> {
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): INfts | null | Observable<INfts> | Promise<INfts> {
         const nftId = route.params['id'];
-        console.log(nftId + 'NFT ID HERE')
+        // console.log(nftId + 'NFT ID HERE')
         if (!nftId) {
             this.router.navigate(['/catalog']);
             return null;

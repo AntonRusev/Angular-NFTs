@@ -20,9 +20,9 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     SharedModule,
     CoreModule,
-    SharedModule
   ],
-  providers: [appInterceptorProvider,
+  providers: [
+    appInterceptorProvider,
   {
     provide: API_ERROR,
     useValue: new BehaviorSubject(null)

@@ -31,11 +31,9 @@ export class LoginComponent {
     // this.authService.login(username!, password!)
     // .subscribe(res => console.log(res));
 
-
     const returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/';
     
     this.router.navigate([returnUrl]);
-    // this.form.reset();
   }
 
 

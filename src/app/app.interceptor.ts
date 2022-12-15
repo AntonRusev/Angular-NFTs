@@ -27,7 +27,7 @@ export class AppInterceptor implements HttpInterceptor {
                 headers: request.headers.set('Authorization', accessToken)
             });
         }
-        console.log(request);
+        // console.log(request);
 
         return next.handle(request).pipe(
             catchError(err => of(err).pipe(
@@ -46,15 +46,7 @@ export class AppInterceptor implements HttpInterceptor {
                     return throwError(() =>  err);
                 })
             )
-        ))
-
-        // return next.handle(request)
-        // // .pipe(tap((event: HttpEvent<any>) => {
-        // //     if (event instanceof HttpResponse && request.url.endsWith('login')) {
-        // //         this.saveToken(event);
-        // //     }
-        // // }))
-             
+        ))             
     }
 }
 

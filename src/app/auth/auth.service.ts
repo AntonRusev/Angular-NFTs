@@ -53,7 +53,6 @@ export class AuthService implements OnDestroy {
       tap(() => this.user$$.next(null)),
       tap(() => localStorage.clear()));
   }
-  // TODO check for the proper path for /register /login and /logout
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

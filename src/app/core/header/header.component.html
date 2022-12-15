@@ -31,7 +31,7 @@
                 <a routerLink="/nfts/catalog">Catalog</a>
             </li>
             <li>
-                <a routerLink="/nfts/new">Add new NFT</a>
+                <a routerLink="/nfts/new" *ngIf="isLoggedIn">Add new NFT</a>
             </li>
         </ul>
     </nav>

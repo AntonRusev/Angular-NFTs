@@ -1,1 +1,64 @@
 <p>nft-detail works!</p>
+<!-- {{nftDetail | json}} -->
+
+<div *ngIf="errorFetchingData">Error loading details</div>
+
+<ng-container *ngIf="!editMode">
+    <div *ngIf="nftDetail">
+        <div>
+            <p>{{nftDetail.nftName}}</p>
+        </div>
+        <div>
+            <!-- <img src="{{nftDetail.imageUrl}}"> -->
+            <p>{{nftDetail.imageUrl}}</p>
+        </div>
+        <div>
+            <p>Price: </p>
+            <p>{{nftDetail.price}}</p>
+        </div>
+        <div>
+            <p>{{nftDetail.description}}</p>
+        </div>
+        <button (click)="editModeHandler()">Edit</button>
+        <button (click)="deleteThisNft()">Delete</button>
+        <button routerLink="/nfts/catalog">Back to catalog</button>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="editMode">
+    <form [formGroup]="editForm" (ngSubmit)="editNftHandler()">
+    <div *ngIf="nftDetail">
+        <div>
+            <!-- <img src="{{nftDetail.imageUrl}}"> -->
+            <!-- <p>{{nftDetail.imageUrl}}</p> -->
+            <p>
+                <label for="imageUrl"><span><i></i></span> Image URL:  </label>
+                <input type="text" id="imageUrl" formControlName="imageUrl" placeholder="{{nftDetail.imageUrl}}"> 
+            </p>
+        </div>
+        <div>
+            <!-- <p>{{nftDetail.nftName}}</p> -->
+            <p>
+                <label for="name"><span><i></i></span>Name: </label>
+                <input type="text" id="nftName" formControlName="nftName"> 
+            </p>
+        </div>
+        <div>
+            <!-- <p>{{nftDetail.price}}</p> -->
+            <p>
+                <label for="price"><span><i></i></span>Price: </label>
+                <input type="number" id="price" formControlName="price" placeholder="{{nftDetail.price}}"> 
+            </p>
+        </div>
+        <div>
+            <!-- <p>{{nftDetail.description}}</p> -->
+            <p>
+                <label for="description"><span><i></i></span>Description: </label>
+                <textarea type="text" id="description" formControlName="description" placeholder="{{nftDetail.description}}"> </textarea>
+            </p>
+        </div>
+        <button [disabled]="editForm.invalid" type="submit">Save</button>
+        <button (click)="editModeHandler()" type="button">Cancel</button>
+    </div>
+    </form> 
+</ng-container>
