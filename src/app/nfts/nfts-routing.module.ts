@@ -1,4 +1,5 @@
 import { RouterModule, Routes } from "@angular/router";
+import { OnlyLoggedInUsersGuard } from "../shared/guards/auth.activate";
 import { AddNewNftsComponent } from "./add-new/add-new.component";
 import { CatalogComponent } from "./catalog/catalog.component";
 import { NftDetailComponent } from "./nft-detail/nft-detail.component";
@@ -23,6 +24,7 @@ const routes: Routes = [
     {
         path: 'new',
         component: AddNewNftsComponent,
+        canActivate: [OnlyLoggedInUsersGuard],
         data: {
             title: 'Add new NFTs'
         }

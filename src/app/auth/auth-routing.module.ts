@@ -1,4 +1,5 @@
 import { RouterModule, Routes } from "@angular/router";
+import { OnlyLoggedInUsersGuard } from "../shared/guards/auth.activate";
 import { LoginComponent } from "./login/login.component";
 import { LogoutComponent } from "./logout/logout.component";
 import { ProfileComponent } from "./profile/profile.component";
@@ -9,28 +10,30 @@ const routes: Routes = [
         path: 'login',
         component: LoginComponent,
         data: {
-            title: 'Login'
+            title: 'Login',
         }
     },
     {
         path: 'register',
         component: RegisterComponent,
         data: {
-            title: 'Register'
+            title: 'Register',
         }
     },
     {
         path: 'logout',
         component: LogoutComponent,
+        canActivate: [OnlyLoggedInUsersGuard],
         data: {
-            title: 'Logout'
+            title: 'Logout',
         }
     },
     {
         path: 'profile',
         component: ProfileComponent,
+        canActivate: [OnlyLoggedInUsersGuard],
         data: {
-            title: 'Profile'
+            title: 'Profile',
         }
     },
 ]

@@ -4,4 +4,5 @@ export interface INfts {
     imageUrl: string,
     price: number,
     description: string,
+    _ownerId: string,
 }
