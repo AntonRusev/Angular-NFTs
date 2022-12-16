@@ -24,9 +24,9 @@
                 <p *ngIf="form.get('imageUrl')?.touched && form.get('imageUrl')?.errors?.['required']" class="error">
                     Image URL is required!
                 </p>
-                <!-- <p *ngIf="form.get('nftName')?.touched && form.get('nftName')?.errors?.['minlength']" class="error">
-                    Name must be at least 5 characters long!
-                </p> -->
+                <p *ngIf="form.get('imageUrl')?.touched && form.get('imageUrl')?.errors?.['pattern']" class="error">
+                    Image URL is not valid!
+                </p>
             </ng-container>
             
 

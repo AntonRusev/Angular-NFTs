@@ -12,7 +12,7 @@ export class AddNewNftsComponent {
 
   form = this.fb.group({
     nftName: ['', [Validators.required, Validators.minLength(5)]],
-    imageUrl: ['', [Validators.required]], //TODO imageURL validator
+    imageUrl: ['', [Validators.required, Validators.pattern(`(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))`)]], //TODO imageURL validator
     price: [1, [Validators.required, Validators.min(1)]],
     description: ['', [Validators.required, Validators.minLength(10)]],
   });
