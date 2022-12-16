@@ -6,18 +6,17 @@
 <ng-container *ngIf="!editMode">
     <div *ngIf="nftDetail">
         <div>
-            <p>{{nftDetail.nftName}}</p>
+            <h2>Name: {{nftDetail.nftName}}</h2>
         </div>
         <div>
-            <!-- <img src="{{nftDetail.imageUrl}}"> -->
-            <p>{{nftDetail.imageUrl}}</p>
+            <img src="{{nftDetail.imageUrl}}">
+            <!-- <p>{{nftDetail.imageUrl}}</p> -->
         </div>
         <div>
-            <p>Price: </p>
-            <p>{{nftDetail.price}}</p>
+            <p>Price: ${{nftDetail.price}}</p>
         </div>
         <div>
-            <p>{{nftDetail.description}}</p>
+            <p>Discription: {{nftDetail.description}}</p>
         </div>
         <div *ngIf="isOwner">
         <button (click)="editModeHandler()">Edit</button>

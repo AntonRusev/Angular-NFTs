@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, filter, Subscription, tap } from 'rxjs';
+import { BehaviorSubject, catchError, filter, of, Subscription, tap } from 'rxjs';
 import { IUser } from '../shared/interfaces';
 
 @Injectable({
@@ -44,6 +44,7 @@ export class AuthService implements OnDestroy {
     return this.http.post<any>('http://localhost:3030/users/login', { username, password })
     .pipe(
       tap(res => localStorage.setItem('accessToken', res.accessToken)),
+      tap(res => localStorage.setItem('currentUser', JSON.stringify({'accessToken': res.accessToken, '_id': res._id, 'username': res.username, 'email': res.email}))),
       tap(user => this.user$$.next(user)));
   }
 
@@ -52,6 +53,26 @@ export class AuthService implements OnDestroy {
     .pipe(
       tap(() => this.user$$.next(null)),
       tap(() => localStorage.clear()));
+  }
+
+  // currentUser() {
+  //   return JSON.parse(localStorage.getItem('currentUser') || '{}')
+  //   .pipe(
+  //     tap(user => this.user$$.next(<IUser>user)),
+  //     tap(() => console.log(this.user)),
+  //     catchError((err) => {
+  //       this.user$$.next(null);
+  //       return of(err);
+  //     })
+  //   );
+  // }
+
+  currentUser() {
+    const user =  JSON.parse(localStorage.getItem('currentUser') || '{}');
+    if (Object.keys(user).length !== 0) {
+      this.user$$.next(<IUser>user);
+    }
+    return;
   }
 
   ngOnDestroy(): void {

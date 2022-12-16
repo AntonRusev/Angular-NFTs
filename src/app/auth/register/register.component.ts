@@ -18,7 +18,7 @@ export class RegisterComponent {
     rePassword: [],
   },
   {
-    validator: matchPasswordValidator('password', 'rePassword')
+    validators: [matchPasswordValidator('password', 'rePassword')]
   });
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }

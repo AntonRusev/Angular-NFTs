@@ -9,10 +9,12 @@ import { appInterceptorProvider } from './app.interceptor';
 import { CoreModule } from './core/core.module';
 import { API_ERROR } from './shared/constants';
 import { SharedModule } from './shared/shared.module';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AuthenticateComponent
   ],
   imports: [
     HttpClientModule,

@@ -7,11 +7,30 @@
                 <input type="text" id="username" formControlName="username" placeholder="Enter Your Username"> 
             </p>
 
+            <ng-container *ngIf="form.get('username')?.touched">
+                <p *ngIf="form.get('username')?.touched && form.get('username')?.errors?.['required']" class="error">
+                    Username is required!
+                </p>
+                <p *ngIf="form.get('username')?.touched && form.get('username')?.errors?.['minlength']" class="error">
+                    Username must be at least 5 characters long!
+                </p>
+            </ng-container>
+
+
             <!-- password -->
             <p>
                 <label for="password"><span><i></i></span>Password: </label>
                 <input type="password" id="password" formControlName="password" placeholder="Enter Your Password"> 
             </p>
+            <ng-container *ngIf="form.get('password')?.touched">  
+                <p *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['required']" class="error">
+                    Password is required!
+                </p>
+                <p *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['minlength']" class="error">
+                    Password must be at least 5 characters long!
+                </p>
+            </ng-container>
+
 
             <button [disabled]="form.invalid">Login</button>
 
@@ -19,6 +38,6 @@
                 Don't have an account?
                 <a routerLink="/auth/register">Register</a>
             </p>
-
+            
     </fieldset>
 </form>
