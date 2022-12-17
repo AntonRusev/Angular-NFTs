@@ -1,7 +1,7 @@
 <header>
     <div>
         <div class="logo">
-            <p><span>NFTs</span></p>
+            <p class="logo"><span class="logo"><h1>NosesFeetTails</h1></span></p>
         </div>
         <div class="mini-navbar">
             <ul class="not-logged" *ngIf="!isLoggedIn">
@@ -23,6 +23,7 @@
         </div>
     </div>
     <nav>
+        <div class="catalog-nav">
         <ul>
             <li>
                 <a routerLink="/">Home</a>
@@ -30,9 +31,11 @@
             <li>
                 <a routerLink="/nfts/catalog">Catalog</a>
             </li>
-            <li>
-                <a routerLink="/nfts/new" *ngIf="isLoggedIn">Add new NFT</a>
-            </li>
+            <!-- <li>
+                <a routerLink="/nfts/new" *ngIf="isLoggedIn">Add NFT</a>
+            </li> -->
+            <!-- MOVE CREATE NFT SOMEWHERE ELSE TODO  -->
         </ul>
+        </div>
     </nav>
 </header>

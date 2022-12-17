@@ -1,34 +1,37 @@
-<p>nft-detail works!</p>
 <!-- {{nftDetail | json}} -->
 
 <div *ngIf="errorFetchingData">Error loading details</div>
 
 <ng-container *ngIf="!editMode">
-    <div *ngIf="nftDetail">
+    <div class="wrap" *ngIf="nftDetail">
         <div>
-            <h2>Name: {{nftDetail.nftName}}</h2>
+            <h2 class="dtl-name">{{nftDetail.nftName}}</h2>
         </div>
+        <div class="dtl-description">
+            <p>{{nftDetail.description}}</p>
+        </div>
+
         <div>
-            <img src="{{nftDetail.imageUrl}}">
+            <img class="dtl-img" src="{{nftDetail.imageUrl}}">
             <!-- <p>{{nftDetail.imageUrl}}</p> -->
         </div>
-        <div>
-            <p>Price: ${{nftDetail.price}}</p>
+
+        <div class="dtl-price">
+            <p>₿{{nftDetail.price}}</p>
         </div>
-        <div>
-            <p>Discription: {{nftDetail.description}}</p>
-        </div>
-        <div *ngIf="isOwner">
-        <button (click)="editModeHandler()">Edit</button>
-        <button (click)="deleteThisNft()">Delete</button>
-        </div>
-        <button routerLink="/nfts/catalog">Back to catalog</button>
+
+            <div>
+                <button class="get-back-btn" routerLink="/nfts/catalog">Back</button>
+                <button  *ngIf="isOwner" class="edit-btn" (click)="editModeHandler()">Edit</button>
+                <button  *ngIf="isOwner" class="delete-btn" (click)="deleteThisNft()">Delete</button>
+            </div>
+
     </div>
 </ng-container>
 
-<ng-container *ngIf="editMode">
+<ng-container *ngIf="editMode" >
     <form [formGroup]="editForm" (ngSubmit)="editNftHandler()">
-    <div *ngIf="nftDetail">
+    <div *ngIf="nftDetail" class="edit-wrap">
         <div>
             <!-- <img src="{{nftDetail.imageUrl}}"> -->
             <!-- <p>{{nftDetail.imageUrl}}</p> -->

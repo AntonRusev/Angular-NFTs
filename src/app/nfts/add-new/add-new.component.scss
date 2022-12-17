@@ -1,0 +1,82 @@
+h2 {
+    background-color: #275a12;
+    color: rgb(245, 245, 245);
+    font-size: 35px;
+    font-family: Geneva, 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    border: 3px solid #275a12;
+    border-radius: 0.3em;
+}
+
+label {
+    display: block;
+}
+
+input {
+    // width: 30%;
+    // height: 30px;
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid rgb(43, 128, 23);
+    border-radius: 0.5em;
+    }
+
+
+.add-nft-wrap {
+    background-color: rgb(43, 128, 23);
+    color: rgb(245, 245, 245);
+    font-size: 20px;
+    font-family: Geneva, 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    border: 3px solid #275a12;
+    border-radius: 0.3em;
+}
+
+button {
+    display: inline-block;
+    height: 60px;
+    width: 100px;
+    background-color: #275a12;
+    border: 3px solid #275a12;
+    color: rgb(245, 245, 245);
+    border-radius: 0.3em;
+    font-size: 21px;
+    font-family: Geneva, 'Arial Narrow', Arial, sans-serif;
+    cursor: pointer;
+    margin: 8px 8px;
+    margin-bottom: 2%;
+}
+
+p.error {
+    display: block;
+    text-align: center;
+    border-radius: 0.3em;
+    color: red;
+    padding-top: 0;
+    border: 3px solid red;
+    background-color: rgb(245, 245, 245);
+    // border-radius: 0.5em;
+    width: 25%;
+    padding: 12px 20px;
+    margin: auto;
+} 
+
+a {
+    border: 3px solid #275a12;
+    border-radius: 0.3em;
+    background-color: #275a12;
+    color: rgb(245, 245, 245);
+    text-decoration: none;
+}
+
+#description{
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid rgb(43, 128, 23);
+    border-radius: 0.5em;
+    resize: none;
+}

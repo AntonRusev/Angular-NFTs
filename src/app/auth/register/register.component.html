@@ -1,7 +1,8 @@
 <form [formGroup]="form" (ngSubmit)="registerHandler()">
-    <fieldset>
+    <!-- <fieldset> -->
         <h2>Registration Form</h2>
 
+        <div class="register-wrap">
             <!-- username -->
             <p>
                 <label for="username"><span><i></i></span> Username: </label>
@@ -62,5 +63,6 @@
                 Already have an account?
                 <a routerLink="/auth/login">Login</a>
             </p>
-    </fieldset>
+        </div>
+    <!-- </fieldset> -->
 </form>

@@ -1,7 +1,8 @@
 <form [formGroup]="form" (ngSubmit)="loginHandler()">
-    <fieldset>
+    <!-- <fieldset> -->
         <h2>Login Form</h2>
             <!-- username -->
+        <div class="login-wrap" >
             <p>
                 <label for="username"><span><i></i></span> Username: </label>
                 <input type="text" id="username" formControlName="username" placeholder="Enter Your Username"> 
@@ -38,6 +39,6 @@
                 Don't have an account?
                 <a routerLink="/auth/register">Register</a>
             </p>
-            
-    </fieldset>
+        </div>
+    <!-- </fieldset> -->
 </form>

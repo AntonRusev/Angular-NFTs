@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
 import { INfts } from 'src/app/shared/interfaces';
 import { NftsService } from '../nfts.service';
 
@@ -9,11 +10,15 @@ import { NftsService } from '../nfts.service';
 })
 export class CatalogComponent implements OnInit {
 
+  get isLoggedIn() {
+    return this.authService.isLoggedIn;
+  }
+
   nftsList: INfts[] | null = null;
 
   errorFetchingData = false;
 
-  constructor(private nftsService: NftsService) { }
+  constructor(private nftsService: NftsService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.nftsService.getNfts().subscribe({

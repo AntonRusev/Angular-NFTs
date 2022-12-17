@@ -1,6 +1,8 @@
 <form [formGroup]="form" (ngSubmit)="newNftHandler()">
-    <fieldset>
-        <h2>Add new NFT</h2>
+    <!-- <fieldset> -->
+        <h2>Add new NFTs</h2>
+
+        <div class="add-nft-wrap">
             <!-- nftName -->
             <p>
                 <label for="name"><span><i></i></span>Name: </label>
@@ -58,15 +60,11 @@
                     Description must be at least 10 characters long!
                 </p>
             </ng-container>
-
-
-            <div>
-                <button [disabled]="form.invalid">Add</button>
-            </div>
             
             <div>
+                <button [disabled]="form.invalid">Add</button>
                 <button routerLink="/nfts/catalog">Cancel</button>
             </div>
-
-    </fieldset>
+        </div>
+    <!-- </fieldset> -->
 </form>

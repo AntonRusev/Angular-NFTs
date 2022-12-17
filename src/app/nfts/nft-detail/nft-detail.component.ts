@@ -93,8 +93,7 @@ export class NftDetailComponent implements OnInit {
 
   this.nftsService.updateNft(this.id, nftName!, imageUrl!, price!, description!)
     .subscribe(user => {
-      this.router.navigate(['/nfts/catalog']);
-
+      this.router.navigate([`/nfts/catalog`]);
     });
  }
 }

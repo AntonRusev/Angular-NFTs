@@ -21,7 +21,6 @@ export class LoginComponent {
     if( this.form.invalid) {
       return;
     }
-    console.log(this.form.value)
     const { username, password } = this.form.value;
 
     this.authService.login(username!, password!)

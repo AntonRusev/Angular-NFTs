@@ -1,1 +1,38 @@
-<p>home works!</p>
+<div *ngIf="errorFetchingData">Error loading nfts</div>
+
+<div>
+<img src="https://toegrips.com/wp-content/uploads/stencil.fb-blog-91.jpg" alt="">
+<img src="https://www.lindenheightsanimal.com/wp-content/uploads/2019/07/happy-cat-feet.jpg" alt="">
+<img src="https://t3.ftcdn.net/jpg/01/32/86/42/360_F_132864233_RymcOAa5X8cnEQZaujz4RHfk9Pn2yx3G.jpg" alt="">
+</div>
+    <!-- Welcome Message -->
+<div class="home-wrap">
+    <div *ngIf="isLoggedIn">
+        <p>Welcome to NFTs gallery, {{user?.username}}!</p>
+    </div>
+    <div *ngIf="!isLoggedIn">
+        <p>Welcome to NFTs gallery!</p>
+    </div>
+    <div>
+        <p>Here we strive to gather and put on display as many valuable pictures of <strong>N</strong>oses, <strong>F</strong>eet and <strong>T</strong>ail<strong>s</strong> of our dearest pets!</p>
+    </div>
+
+    <!-- Catalog information -->
+
+    <div *ngIf="nftsList"> 
+        <p>Currently our collection consists of {{nftsList.length}} NFTs.</p>
+    </div>
+    <div *ngIf="!nftsList">
+        <p>Currently we have no NFTs in our collection.</p>
+    </div>
+
+    <!-- Links to login/register and add new nft -->
+
+    <div *ngIf="isLoggedIn">
+        <p>If you want to help us expand our collection by adding your own NFTs, click <a routerLink="/nfts/new">here</a>!</p>
+    </div>
+    <div *ngIf="!isLoggedIn">
+        <p>If you want to help us expand our collection by adding your own NFTs, you need to login first, by clicking <a routerLink="/auth/login">here</a>!</p>
+        <p>If you don't have an account, you can register <a routerLink="/auth/register">here</a>!</p>
+    </div>
+</div>
