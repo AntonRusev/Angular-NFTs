@@ -27,7 +27,6 @@ export class AppInterceptor implements HttpInterceptor {
                 headers: request.headers.set('Authorization', accessToken)
             });
         }
-        // console.log(request);
 
         return next.handle(request).pipe(
             catchError(err => of(err).pipe(

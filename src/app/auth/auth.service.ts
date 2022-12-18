@@ -37,6 +37,7 @@ export class AuthService implements OnDestroy {
     return this.http.post<any>('http://localhost:3030/users/register', { username, email, password, rePassword})
     .pipe(
       tap(res => localStorage.setItem('accessToken', res.accessToken)),
+      tap(res => localStorage.setItem('currentUser', JSON.stringify({'accessToken': res.accessToken, '_id': res._id, 'username': res.username, 'email': res.email}))),
       tap(user => this.user$$.next(user)));
   }
 
@@ -55,17 +56,6 @@ export class AuthService implements OnDestroy {
       tap(() => localStorage.clear()));
   }
 
-  // currentUser() {
-  //   return JSON.parse(localStorage.getItem('currentUser') || '{}')
-  //   .pipe(
-  //     tap(user => this.user$$.next(<IUser>user)),
-  //     tap(() => console.log(this.user)),
-  //     catchError((err) => {
-  //       this.user$$.next(null);
-  //       return of(err);
-  //     })
-  //   );
-  // }
 
   currentUser() {
     const user =  JSON.parse(localStorage.getItem('currentUser') || '{}');

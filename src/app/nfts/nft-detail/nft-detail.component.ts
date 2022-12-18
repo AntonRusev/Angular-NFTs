@@ -65,7 +65,7 @@ export class NftDetailComponent implements OnInit {
  // TODO use this alternatively - https://stackoverflow.com/questions/41684114/easy-way-to-make-a-confirmation-dialog-in-angular
 
  editForm = this.fb.group({
-  imageUrl: ['', [Validators.required]], //TODO imageURL validator
+  imageUrl: ['', [Validators.required, Validators.pattern(`(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))`)]], //TODO imageURL validator
   nftName: ['', [Validators.required, Validators.minLength(5)]],
   price: [1, [Validators.required, Validators.min(1)]],
   description: ['', [Validators.required, Validators.minLength(10)]],

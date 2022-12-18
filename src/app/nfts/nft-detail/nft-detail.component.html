@@ -39,6 +39,14 @@
                 <label for="imageUrl"><span><i></i></span> Image URL:  </label>
                 <input type="text" id="imageUrl" formControlName="imageUrl" placeholder="{{nftDetail.imageUrl}}"> 
             </p>
+            <ng-container *ngIf="editForm.get('imageUrl')?.touched">
+                <p *ngIf="editForm.get('imageUrl')?.touched && editForm.get('imageUrl')?.errors?.['required']" class="error">
+                    Image URL is required!
+                </p>
+                <p *ngIf="editForm.get('imageUrl')?.touched && editForm.get('imageUrl')?.errors?.['pattern']" class="error">
+                    Image URL is not valid!
+                </p>
+            </ng-container>
         </div>
         <div>
             <!-- <p>{{nftDetail.nftName}}</p> -->
@@ -46,6 +54,14 @@
                 <label for="name"><span><i></i></span>Name: </label>
                 <input type="text" id="nftName" formControlName="nftName"> 
             </p>
+            <ng-container *ngIf="editForm.get('nftName')?.touched">
+                <p *ngIf="editForm.get('nftName')?.touched && editForm.get('nftName')?.errors?.['required']" class="error">
+                    Name is required!
+                </p>
+                <p *ngIf="editForm.get('nftName')?.touched && editForm.get('nftName')?.errors?.['minlength']" class="error">
+                    Name must be at least 5 characters long!
+                </p>
+            </ng-container>
         </div>
         <div>
             <!-- <p>{{nftDetail.price}}</p> -->
@@ -53,6 +69,14 @@
                 <label for="price"><span><i></i></span>Price: </label>
                 <input type="number" id="price" formControlName="price" placeholder="{{nftDetail.price}}"> 
             </p>
+            <ng-container *ngIf="editForm.get('price')?.touched">
+                <p *ngIf="editForm.get('price')?.touched && editForm.get('price')?.errors?.['required']" class="error">
+                    Price is required and must be a number!
+                </p>
+                <p *ngIf="editForm.get('price')?.touched && editForm.get('price')?.errors?.['min']" class="error">
+                   The price can't be lower than 1.
+                </p>
+            </ng-container>
         </div>
         <div>
             <!-- <p>{{nftDetail.description}}</p> -->
@@ -60,6 +84,14 @@
                 <label for="description"><span><i></i></span>Description: </label>
                 <textarea type="text" id="description" formControlName="description" placeholder="{{nftDetail.description}}"> </textarea>
             </p>
+            <ng-container *ngIf="editForm.get('description')?.touched">
+                <p *ngIf="editForm.get('description')?.touched && editForm.get('description')?.errors?.['required']" class="error">
+                    Description is required!
+                </p>
+                <p *ngIf="editForm.get('description')?.touched && editForm.get('description')?.errors?.['minlength']" class="error">
+                    Description must be at least 10 characters long!
+                </p>
+            </ng-container>
         </div>
         <button [disabled]="editForm.invalid" type="submit">Save</button>
         <button (click)="editModeHandler()" type="button">Cancel</button>
