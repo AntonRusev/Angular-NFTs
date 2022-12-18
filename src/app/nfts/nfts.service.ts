@@ -11,7 +11,7 @@ export class NftsService {
 
   constructor(private http: HttpClient) { }
 
-  // TODO check proper path for nfts link
+  
   getNfts() {
     let url = 'http://localhost:3030/data/catalog';
     return this.http.get<INfts[]>(url);
@@ -20,7 +20,7 @@ export class NftsService {
   getNft(id: string) {
     return this.http.get<INfts>('http://localhost:3030/data/catalog/' + id);
   }
- // TODO check for proper name of the parameters required by the rest-api
+ 
   createNft(nftName: string, imageUrl: string, price: number, description: string){
     return this.http.post<INfts>('http://localhost:3030/data/catalog', { nftName, imageUrl, price, description });
   }

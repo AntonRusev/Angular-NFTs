@@ -26,7 +26,7 @@
                 <p *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['required']" class="error">
                     Email is required!
                 </p>
-                <p *ngIf="form.get('username')?.touched && form.get('username')?.errors?.['email']" class="error">
+                <p *ngIf="form.get('username')?.touched && form.get('email')?.errors?.['email']" class="error">
                     Email is not valid!
                 </p>
             </ng-container>
